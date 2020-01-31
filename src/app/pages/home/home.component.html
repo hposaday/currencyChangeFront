@@ -1,0 +1,33 @@
+<app-toolbar></app-toolbar>
+
+<mat-card>
+
+
+
+
+    <mat-grid-list cols="3" rowHeight="2:1">
+        <mat-grid-tile>
+            <mat-form-field>
+                <input matInput number placeholder="Cantidad a convertir" [(ngModel)]="amountValue">
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field>
+                <mat-label>Seleccione Moneda</mat-label>
+                <mat-select [(value)]="selectedCurrency">
+                    <mat-option *ngFor="let currency of currencies" value="{{currency.trm}}">{{currency.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <button mat-raised-button color="primary" (click)="convertCurrency()">Calcular</button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-label style="margin-left: 10px">Resultado: </mat-label>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-label>${{convertedCurrency}} </mat-label>
+        </mat-grid-tile>
+    </mat-grid-list>
+</mat-card>
