@@ -24,12 +24,20 @@ export class HomeComponent implements OnInit {
   private selectedCurrency = ''
   convertedCurrency = 0
 
+  private showConfig = true
+  private showCalculator = true
+
   constructor(
     private currencyService: CurrencyService
   ) { }
 
   ngOnInit() {
   }
+
+ changeTrm(currencyPosition, currencyTrm) {
+  console.log(this.currencies[currencyPosition], currencyTrm)
+  this.currencies[currencyPosition].trm = currencyTrm
+}
 
  convertCurrency() {
     console.log(this.amountValue, this.selectedCurrency)

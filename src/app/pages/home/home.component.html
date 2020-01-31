@@ -1,10 +1,6 @@
 <app-toolbar></app-toolbar>
 
-<mat-card>
-
-
-
-
+<mat-card *ngIf="showCalculator">
     <mat-grid-list cols="3" rowHeight="2:1">
         <mat-grid-tile>
             <mat-form-field>
@@ -30,4 +26,16 @@
             <mat-label>${{convertedCurrency}} </mat-label>
         </mat-grid-tile>
     </mat-grid-list>
+</mat-card>
+
+<mat-card *ngIf="showConfig">
+    <mat-label style="margin-left: 10px">Configuracion</mat-label>
+<mat-grid-list cols="1" rowHeight="8:1">
+    <mat-grid-tile *ngFor="let currency of currencies; let i = index">
+        <mat-form-field>
+            <input matInput number placeholder="TRM de {{currency.name}}" [(ngModel)]="currency.trm">
+        </mat-form-field>
+         <button style="margin-left:50px" mat-raised-button color="primary" (click)="changeTrm(i, currency.trm)">Calcular</button>
+    </mat-grid-tile>
+</mat-grid-list>
 </mat-card>
